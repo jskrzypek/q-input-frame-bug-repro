@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import MyUploader from './components/Uploader.vue'
 
 Vue.use(VueRouter)
 
@@ -22,7 +23,13 @@ export default new VueRouter({
    */
 
   routes: [
-    { path: '/', component: load('Hello') },
+    { path: '/',
+      component: load('Hello'),
+      children: [{
+        path: 'my-uploader/',
+        component: MyUploader
+      }]
+    },
 
     // Always leave this last one
     { path: '*', component: load('Error404') } // Not found
